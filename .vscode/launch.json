@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Ejercicio 2 - Crear base de datos",
+            "request": "launch",
+            "mainClass": "ejercicio2.Main",
+            "projectName": "Ejercicio2"
+        },
+        {
+            "type": "java",
+            "name": "Ejercicio 3 - Servidor RMI (Fachada)",
+            "request": "launch",
+            "mainClass": "servidor.ServidorRMI",
+            "projectName": "Ejercicio3"
+        },
+        {
+            "type": "java",
+            "name": "Ejercicio 3 - Cliente (interfaz grafica)",
+            "request": "launch",
+            "mainClass": "grafica.Principal",
+            "projectName": "Ejercicio3"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Ejercicio 3 - Servidor + Cliente",
+            "configurations": [
+                "Ejercicio 3 - Servidor RMI (Fachada)",
+                "Ejercicio 3 - Cliente (interfaz grafica)"
+            ]
+        }
+    ]
+}

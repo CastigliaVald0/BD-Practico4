@@ -1,0 +1,37 @@
+// Este proyecto vive dentro de una carpeta sincronizada por Nextcloud, que
+// convierte los archivos en placeholders y rompe la compilacion de Gradle
+// ("Cannot snapshot ...: not a regular file"). Por eso los directorios de
+// salida se escriben fuera del arbol sincronizado.
+def raizBuild = new File(System.getProperty('user.home'), '.gradle-builds/Practico4')
+
+// Configuracion comun a los dos subproyectos (Ejercicio2 y Ejercicio3)
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'application'
+
+    layout.buildDirectory = new File(raizBuild, project.name)
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        // Driver JDBC de MySQL
+        implementation 'com.mysql:mysql-connector-j:9.1.0'
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
+
+    tasks.withType(JavaExec).configureEach {
+        // Permite escribir por consola cuando se ejecuta con ./gradlew run
+        standardInput = System.in
+    }
+}

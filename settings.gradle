@@ -1,0 +1,4 @@
+rootProject.name = 'Practico4'
+
+include 'Ejercicio2'
+include 'Ejercicio3'

@@ -1,0 +1,20 @@
+application {
+    // main por defecto: levanta el servidor RMI con la Fachada
+    mainClass = 'servidor.ServidorRMI'
+}
+
+// ./gradlew :Ejercicio3:runServidor   -> publica la Fachada en el registro RMI
+tasks.register('runServidor', JavaExec) {
+    group = 'application'
+    description = 'Levanta el servidor RMI que publica la Fachada'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'servidor.ServidorRMI'
+}
+
+// ./gradlew :Ejercicio3:runCliente    -> abre la interfaz grafica (MVC)
+tasks.register('runCliente', JavaExec) {
+    group = 'application'
+    description = 'Abre la capa grafica, que accede a la Fachada por RMI'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'grafica.Principal'
+}
